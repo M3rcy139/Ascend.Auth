@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Ascend.Client" Version="1.0.5" />
+        <PackageReference Include="Grpc.Core" Version="2.46.6" />
+        <PackageReference Include="Grpc.Net.Client" Version="2.71.0" />
+        <PackageReference Include="Grpc.Net.ClientFactory" Version="2.71.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.17" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.11">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Ascend.Auth.Business\Ascend.Auth.Business.csproj" />
+      <ProjectReference Include="..\Ascend.AuthService.GrpcServices\Ascend.AuthService.GrpcServices.csproj" />
+      <ProjectReference Include="..\Ascend.Auth.Infrastructure\Ascend.Auth.Infrastructure.csproj" />
+      <ProjectReference Include="..\Ascend.Auth.Migrations\Ascend.Auth.Migrations.csproj" />
+    </ItemGroup>
+
+</Project>
