@@ -9,16 +9,18 @@ builder.Logging.AddConsole();
 builder.Logging.AddDebug();
 builder.Logging.AddConfiguration(configuration.GetSection("Logging"));
 
+services.AddHttpContextAccessor();
+
 services.AddDbServices(configuration);
 
 
 services.AddControllersAndSwagger();
 
 services.AddOptions(configuration);
+services.AddExternalClients(configuration);
 services.AddAuthServices();
 services.AddServices();
 services.AddRepositories();
-services.AddExternalClients(configuration);
 services.AddAuthenticationConfiguration(configuration);
 services.AddGrpcServices();
 

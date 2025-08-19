@@ -7,8 +7,8 @@ using Ascend.Auth.Domain.Constants.Messages;
 using Ascend.Auth.Domain.Enums;
 using Ascend.Auth.Domain.Extensions;
 using Ascend.Auth.Domain.Models;
-using Ascend.Client.Interfaces;
-using Ascend.Client.Models.Person;
+using Ascend.Person.Client.Interfaces;
+using Ascend.Person.Client.Models.Person;
 
 namespace Ascend.Auth.Business.Services;
 

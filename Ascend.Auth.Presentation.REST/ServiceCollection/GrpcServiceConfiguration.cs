@@ -1,4 +1,4 @@
-using Ascend.AuthService.GrpcService.Interceptors;
+using Ascend.Common.Configuration.GRPC.Interceptors;
 
 namespace Ascend.Auth.Presentation.REST.ServiceCollection;
 
@@ -8,7 +8,7 @@ public static class GrpServiceConfiguration
     {
         services.AddGrpc(options =>
         {
-            options.Interceptors.Add<GrpcAuthInterceptor>();
+            options.Interceptors.Add<InterceptorGrpcServer>();
         });
     }
 }
