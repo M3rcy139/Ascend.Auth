@@ -1,13 +1,11 @@
 using Ascend.Auth.Presentation.REST.ServiceCollection;
+using Ascend.Common.Configuration.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var configuration = builder.Configuration;
 
-builder.Logging.ClearProviders();
-builder.Logging.AddConsole();
-builder.Logging.AddDebug();
-builder.Logging.AddConfiguration(configuration.GetSection("Logging"));
+builder.Host.ConfigureLogging(configuration);
 
 services.AddHttpContextAccessor();
 

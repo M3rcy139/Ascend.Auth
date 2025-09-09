@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Ascend.Common.Configuration.Logging" Version="1.0.0" />
         <PackageReference Include="Ascend.Person.Client" Version="1.0.1" />
         <PackageReference Include="Grpc.Core" Version="2.46.6" />
         <PackageReference Include="Grpc.Net.Client" Version="2.71.0" />
