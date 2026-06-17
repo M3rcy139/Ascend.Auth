@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using System.Text;
 using Ascend.Auth.Infrastructure.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -21,13 +22,14 @@ public static class AuthenticationConfiguration
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtOptions!.SecretKey)),
+                    RoleClaimType = ClaimTypes.Role,
                 };
 
                 options.Events = new JwtBearerEvents
                 {
                     OnMessageReceived = context =>
                     {
-                        context.Token = context.Request.Cookies["token"];
+                        context.Token = context.Request.Cookies["access_token"];
                         
                         return Task.CompletedTask;
                     }

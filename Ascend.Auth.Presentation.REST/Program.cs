@@ -19,17 +19,20 @@ services.AddExternalClients(configuration);
 services.AddAuthServices();
 services.AddServices();
 services.AddRepositories();
+services.AddSeeders();
 services.AddAuthenticationConfiguration(configuration);
 services.AddGrpcServices();
 
-var app = builder.Build(); 
+var app = builder.Build();
+
+await app.InitializeDatabaseAsync();
 
 var logger = app.Services.GetRequiredService<ILogger<Program>>();
 
 try
 {
     logger.LogInformation("Application configuration complete. Initializing runtime.");
-    
+
     app.ConfigureMiddleware(builder.Environment);
     
     logger.LogInformation("Application started successfully. Running...");

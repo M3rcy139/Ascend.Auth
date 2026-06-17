@@ -1,4 +1,5 @@
 using Ascend.Auth.Business.Interfaces;
+using Ascend.Auth.Domain.Constants.Roles;
 using Ascend.Auth.Domain.Enums;
 using Ascend.Auth.Domain.Models;
 
@@ -14,12 +15,13 @@ public class UserFactory : IUserFactory
         return new User
         {
             Id = Guid.NewGuid(),
-            UserName = userName,
+            Username = userName,
             Email = email,
             PasswordHash = hashedPassword,
             PersonId = personId,
             ContactDetailId = contactDetailId,
             Status = status,
+            Roles = [UserRoles.User],
             ContactDetail = CreateContactDetail(contactDetailId, null, null),
         };
     }

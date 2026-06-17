@@ -1,5 +1,6 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using Ascend.Auth.Business.Interfaces.Authentication;
 using Ascend.Auth.Domain.Constants.Claims;
@@ -13,14 +14,17 @@ public class JwtProvider(IOptions<JwtOptions> options) : IJwtProvider
 {
     private readonly JwtOptions _options = options.Value;
 
-    public string Generate(User user)
+    public string GenerateAccessToken(User user)
     {
-        Claim[] claims =
-        [
-            new (ClaimTypes.NameIdentifier, user.Id.ToString()),
-            new (JwtRegisteredClaimNames.Email, user.Email),
-            new (UserClaims.PersonId, user.PersonId.ToString()),
-        ];
+        var claims = new List<Claim>
+        {
+            new(UserClaims.UserId, user.Id.ToString()),
+            new(UserClaims.Username, user.Username),
+            new(UserClaims.PersonId, user.PersonId.ToString()),
+            new(UserClaims.Email, user.Email),
+        };
+
+        claims.AddRange(user.Roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
         var signingCredentials = new SigningCredentials(
             new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_options.SecretKey)),
@@ -31,8 +35,11 @@ public class JwtProvider(IOptions<JwtOptions> options) : IJwtProvider
             expires: DateTime.UtcNow.AddHours(_options.ExpiresHours),
             signingCredentials: signingCredentials);
 
-        var tokenValue = new JwtSecurityTokenHandler().WriteToken(token);
+        return new JwtSecurityTokenHandler().WriteToken(token);
+    }
 
-        return tokenValue;
+    public string GenerateRefreshToken()
+    {
+        return Convert.ToBase64String(RandomNumberGenerator.GetBytes(64));
     }
 }

@@ -12,7 +12,6 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
     {
         builder.HasKey(u => u.Id);
         
-        builder.HasKey(p => p.Id);
         builder.Property(p => p.Status).IsRequired();
 
         builder
@@ -20,7 +19,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .HasConversion(new EnumToStringConverter<UserStatus>());
 
         builder
-            .Property(u => u.UserName)
+            .Property(u => u.Username)
             .IsRequired();
         
         builder

@@ -1,4 +1,5 @@
 using System.Net;
+using System.Security.Authentication;
 using Ascend.Auth.Domain.Constants.Messages;
 
 namespace Ascend.Auth.Presentation.REST.Middleware;
@@ -16,12 +17,10 @@ public class ExceptionHandlingMiddleware : ExceptionHandlingBaseMiddleware
         {
             await _next(context);
         }
-        // catch (ValidationException ex)
-        // {
-        //     _logger.LogError(ErrorMessages.ValidationFailed, ex.Errors);
-        //
-        //     await HandleExceptionResponseAsync(context, ex, HttpStatusCode.BadRequest);
-        // }
+        catch (AuthenticationException ex)
+        {
+            await HandleExceptionResponseAsync(context, ex, HttpStatusCode.Unauthorized);
+        }
         catch (ArgumentException ex)
         {
             _logger.LogError(ErrorMessages.ArgumentativeException, ex.Message);
@@ -32,7 +31,7 @@ public class ExceptionHandlingMiddleware : ExceptionHandlingBaseMiddleware
         {
             _logger.LogError(ErrorMessages.InvalidOperationException, ex.Message);
 
-            await HandleExceptionResponseAsync (context, ex, HttpStatusCode.BadRequest);
+            await HandleExceptionResponseAsync(context, ex, HttpStatusCode.BadRequest);
         }
         catch (Exception ex)
         {
