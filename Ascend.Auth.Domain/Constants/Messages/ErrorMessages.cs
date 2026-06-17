@@ -14,6 +14,9 @@ public static class ErrorMessages
     public const string AlreadyExistsEmail = "A user with the same email already exists.";
     public const string AlreadyExistsPhoneNumber = "A user with the same phone number already exists.";
     public const string UserNotFound = "User not found.";
+    public const string UserNotActive = "Account is not active.";
+    public const string InvalidRefreshToken = "Invalid or expired refresh token.";
+    public const string RoleAlreadyAssigned = "User already has this role.";
     
     public const string ContactDetailNotFound = "Contact detail not found.";
     

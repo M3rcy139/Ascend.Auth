@@ -11,6 +11,7 @@ public class AscendAuthDbContext : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<ContactDetail> ContactDetails { get; set; }
     public DbSet<Country> Countries { get; set; }
+    public DbSet<RefreshToken> RefreshTokens { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

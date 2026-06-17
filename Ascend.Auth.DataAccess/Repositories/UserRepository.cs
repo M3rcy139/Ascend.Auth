@@ -18,7 +18,7 @@ public class UserRepository : IUserRepository
     {
         var user = await _context.Users
             .AsNoTracking()
-            .FirstOrDefaultAsync(u => u.UserName == userName);
+            .FirstOrDefaultAsync(u => u.Username == userName);
 
         return user;
     }
@@ -47,7 +47,7 @@ public class UserRepository : IUserRepository
     public async Task<bool> UserNameExistsAsync(string userName)
     {
         return await _context.Users
-            .AnyAsync(u => u.UserName == userName);
+            .AnyAsync(u => u.Username == userName);
     }
     
     public async Task<bool> UserEmailExistsAsync(string email)

@@ -19,7 +19,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Ascend.Person.Client" Version="1.0.1" />
+      <PackageReference Include="Ascend.Person.Client" Version="1.0.2" />
+      <PackageReference Include="MediatR" Version="14.1.0" />
     </ItemGroup>
 
 </Project>

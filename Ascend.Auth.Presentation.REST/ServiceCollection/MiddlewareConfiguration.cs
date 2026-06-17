@@ -29,7 +29,10 @@ public static class MiddlewareConfiguration
         
         app.UseRouting();
         //app.UseHttpMetrics();
-        
+
+        app.UseAuthentication();
+        app.UseAuthorization();
+
         app.ConfigureCustomMiddleware();
 
         app.UseEndpoints(endpoints =>

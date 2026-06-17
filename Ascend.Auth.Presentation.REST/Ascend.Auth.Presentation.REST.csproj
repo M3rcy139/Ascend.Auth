@@ -8,11 +8,11 @@
 
     <ItemGroup>
         <PackageReference Include="Ascend.Common.Configuration.Logging" Version="1.0.0" />
-        <PackageReference Include="Ascend.Person.Client" Version="1.0.1" />
+        <PackageReference Include="Ascend.Person.Client" Version="1.0.2" />
         <PackageReference Include="Grpc.Core" Version="2.46.6" />
         <PackageReference Include="Grpc.Net.Client" Version="2.71.0" />
         <PackageReference Include="Grpc.Net.ClientFactory" Version="2.71.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.8" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.9" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.8">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -22,7 +22,9 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Ascend.Auth.Business\Ascend.Auth.Business.csproj" />
-      <ProjectReference Include="..\Ascend.AuthService.GrpcServices\Ascend.AuthService.GrpcServices.csproj" />
+      <ProjectReference Include="..\Ascend.Auth.Client\Ascend.Auth.Client.csproj" />
+      <ProjectReference Include="..\Ascend.Auth.Common\Ascend.Auth.Common.csproj" />
+      <ProjectReference Include="..\Ascend.Auth.GrpcServices\Ascend.Auth.GrpcServices.csproj" />
       <ProjectReference Include="..\Ascend.Auth.Infrastructure\Ascend.Auth.Infrastructure.csproj" />
       <ProjectReference Include="..\Ascend.Auth.Migrations\Ascend.Auth.Migrations.csproj" />
     </ItemGroup>

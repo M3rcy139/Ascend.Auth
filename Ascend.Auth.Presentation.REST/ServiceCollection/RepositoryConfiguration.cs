@@ -8,6 +8,7 @@ public static class RepositoryConfiguration
     public static void AddRepositories(this IServiceCollection services)
     {
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
         //services.AddScoped<IContactDetailRepository, ContactDetailRepository>();
     }
 }
