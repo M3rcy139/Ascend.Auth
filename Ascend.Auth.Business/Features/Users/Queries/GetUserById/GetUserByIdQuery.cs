@@ -1,6 +1,6 @@
-using Ascend.Auth.DataAccess.Interfaces;
+﻿using Ascend.Auth.DataAccess.Interfaces;
 using Ascend.Auth.Domain.Constants.Messages;
-using Ascend.Auth.Domain.Extensions;
+using Ascend.Common.Utils.Extensions;
 using Ascend.Auth.Domain.Models;
 using MediatR;
 
@@ -18,3 +18,4 @@ public class GetUserByIdQueryHandler(IUserRepository userRepository)
         return user!;
     }
 }
+

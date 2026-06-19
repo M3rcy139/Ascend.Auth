@@ -1,4 +1,4 @@
-using Ascend.Auth.Presentation.REST.Middleware;
+using Ascend.Common.Configuration.REST.Extensions;
 
 namespace Ascend.Auth.Presentation.REST.ServiceCollection;
 
@@ -6,7 +6,7 @@ public static class CustomMiddlewareConfiguration
 {
     public static IApplicationBuilder ConfigureCustomMiddleware(this IApplicationBuilder app)
     {
-        app.UseMiddleware<ExceptionHandlingMiddleware>();
+        app.UseAscendExceptionHandling();
 
         return app;
     }

@@ -1,9 +1,9 @@
-using Ascend.Auth.Business.Interfaces;
+﻿using Ascend.Auth.Business.Interfaces;
 using Ascend.Auth.Business.Interfaces.Authentication;
 using Ascend.Auth.DataAccess.Interfaces;
 using Ascend.Auth.Domain.Constants.Messages;
 using Ascend.Auth.Domain.Enums;
-using Ascend.Auth.Domain.Extensions;
+using Ascend.Common.Utils.Extensions;
 using Ascend.Person.Client.Interfaces;
 using Ascend.Person.Client.Models.Person;
 using MediatR;
@@ -43,3 +43,4 @@ public class RegisterUserCommandHandler(
         return Unit.Value;
     }
 }
+
