@@ -1,7 +1,7 @@
 using Ascend.Auth.Business;
 using Ascend.Auth.Business.Factories;
 using Ascend.Auth.Business.Interfaces;
-using Ascend.Auth.Presentation.REST.Behaviors;
+using Ascend.Common.Business.Behaviors;
 using MediatR;
 
 namespace Ascend.Auth.Presentation.REST.ServiceCollection;

@@ -1,4 +1,3 @@
-using Ascend.Auth.Business.Abstractions;
 using Ascend.Auth.Business.Interfaces;
 using Ascend.Auth.Business.Interfaces.Authentication;
 using Ascend.Auth.DataAccess.Interfaces;
