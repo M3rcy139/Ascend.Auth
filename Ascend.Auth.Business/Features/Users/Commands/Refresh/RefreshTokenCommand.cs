@@ -1,5 +1,4 @@
 using System.Security.Authentication;
-using Ascend.Auth.Business.Abstractions;
 using Ascend.Auth.Business.DTOs.Responses;
 using Ascend.Auth.Business.Features.Users.Commands.Login;
 using Ascend.Auth.Business.Interfaces.Authentication;

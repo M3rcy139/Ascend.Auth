@@ -11,5 +11,7 @@ public static class DbConfiguration
             options.UseNpgsql(
                 configuration.GetConnectionString(nameof(AscendAuthDbContext)),
                 b => b.MigrationsAssembly("Ascend.Auth.Migrations")));
+
+        services.AddScoped<DbContext>(sp => sp.GetRequiredService<AscendAuthDbContext>());
     }
 }

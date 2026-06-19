@@ -392,3 +392,16 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+.idea/
+
+# Local appsettings overrides (machine-specific secrets)
+appsettings.*.local.json
+appsettings.local.json
+
+# Docker environment files
+.env
+.env.*
+!.env.example
+
+# NuGet local machine config (contains machine-specific paths)
+NuGet.config

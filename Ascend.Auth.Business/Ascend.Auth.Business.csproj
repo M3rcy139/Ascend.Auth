@@ -20,6 +20,7 @@
 
     <ItemGroup>
       <PackageReference Include="Ascend.Person.Client" Version="1.0.2" />
+      <PackageReference Include="Ascend.Common.Business" Version="1.0.0" />
       <PackageReference Include="MediatR" Version="14.1.0" />
     </ItemGroup>
 
