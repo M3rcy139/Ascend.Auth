@@ -1,7 +1,7 @@
-using Ascend.Auth.DataAccess.Interfaces;
+﻿using Ascend.Auth.DataAccess.Interfaces;
 using Ascend.Auth.Domain.Constants.Messages;
 using Ascend.Auth.Domain.Enums;
-using Ascend.Auth.Domain.Extensions;
+using Ascend.Common.Utils.Extensions;
 using MediatR;
 
 namespace Ascend.Auth.Business.Features.Users.Commands.AssignRole;
@@ -26,3 +26,4 @@ public class AssignRoleCommandHandler(IUserRepository userRepository)
         return Unit.Value;
     }
 }
+

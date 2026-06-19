@@ -1,11 +1,11 @@
-using System.Security.Authentication;
+﻿using System.Security.Authentication;
 using Ascend.Auth.Business.DTOs.Responses;
 using Ascend.Auth.Business.Interfaces.Authentication;
 using Ascend.Auth.Business.Options;
 using Ascend.Auth.DataAccess.Interfaces;
 using Ascend.Auth.Domain.Constants.Messages;
 using Ascend.Auth.Domain.Enums;
-using Ascend.Auth.Domain.Extensions;
+using Ascend.Common.Utils.Extensions;
 using Ascend.Auth.Domain.Models;
 using MediatR;
 using Microsoft.Extensions.Options;
@@ -59,3 +59,4 @@ public class LoginUserCommandHandler(
         return new AuthResponse(accessToken, refreshTokenValue, expiresAt);
     }
 }
+
