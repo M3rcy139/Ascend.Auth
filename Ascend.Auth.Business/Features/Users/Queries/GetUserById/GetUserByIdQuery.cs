@@ -1,6 +1,4 @@
 ﻿using Ascend.Auth.DataAccess.Interfaces;
-using Ascend.Auth.Domain.Constants.Messages;
-using Ascend.Common.Utils.Extensions;
 using Ascend.Auth.Domain.Models;
 using MediatR;
 
@@ -13,9 +11,9 @@ public class GetUserByIdQueryHandler(IUserRepository userRepository)
 {
     public async Task<User> Handle(GetUserByIdQuery query, CancellationToken ct)
     {
-        var user = await userRepository.GetUserByIdAsync(query.UserId);
-        user.ValidateEntity(ErrorMessages.UserNotFound);
-        return user!;
+        return await userRepository.GetUserByIdAsync(query.UserId)
+            ?? throw new NotFoundException("User not found.");
     }
 }
+
 

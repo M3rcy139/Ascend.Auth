@@ -29,7 +29,7 @@ public class UserController(ISender sender) : ControllerBase
     {
         var response = await sender.Send(new LoginUserCommand(request.Email, request.Password), ct);
         SetTokenCookies(response);
-        return Ok(new { message = InfoMessages.SuccessfulLogin });
+        return Ok(new { message = InfoMessages.SuccessfulLogin, userId = response.UserId, personId = response.PersonId });
     }
 
     [HttpPost("refresh")]
@@ -70,11 +70,13 @@ public class UserController(ISender sender) : ControllerBase
 
     private void SetTokenCookies(AuthResponse response)
     {
+        var secure = Request.IsHttps;
+
         Response.Cookies.Append("access_token", response.AccessToken, new CookieOptions
         {
             HttpOnly = true,
             SameSite = SameSiteMode.Strict,
-            Secure = true,
+            Secure = secure,
             Expires = DateTimeOffset.UtcNow.AddHours(12)
         });
 
@@ -82,7 +84,7 @@ public class UserController(ISender sender) : ControllerBase
         {
             HttpOnly = true,
             SameSite = SameSiteMode.Strict,
-            Secure = true,
+            Secure = secure,
             Expires = response.RefreshTokenExpiresAt
         });
     }
