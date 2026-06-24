@@ -30,6 +30,7 @@ public static class MiddlewareConfiguration
         app.UseRouting();
         //app.UseHttpMetrics();
 
+        app.UseCorsFrontend();
         app.UseAuthentication();
         app.UseAuthorization();
 

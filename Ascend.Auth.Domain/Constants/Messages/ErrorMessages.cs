@@ -6,15 +6,6 @@ public static class ErrorMessages
     public const string AlreadyExistsUserName = "A user with the same username already exists.";
     public const string AlreadyExistsEmail = "A user with the same email already exists.";
     public const string AlreadyExistsPhoneNumber = "A user with the same phone number already exists.";
-    public const string UserNotFound = "User not found.";
     public const string UserNotActive = "Account is not active.";
     public const string InvalidRefreshToken = "Invalid or expired refresh token.";
-    public const string RoleAlreadyAssigned = "User already has this role.";
-    
-    public const string ContactDetailNotFound = "Contact detail not found.";
-    
-    public const string PersonNotFound = "Person not found.";
-    
-    public const string StatValueNotFound = "Stat value not found.";
-    public const string SubStatValueNotFound = "SubStatValue not found.";
 }

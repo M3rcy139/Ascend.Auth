@@ -1,6 +1,6 @@
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using Ascend.Auth.Common.Interfaces;
-using Ascend.Auth.Domain.Constants.Claims;
+using Ascend.Common.Identity;
 using Ascend.Common.Identity.Abstractions;
 
 namespace Ascend.Auth.Common.Factories;

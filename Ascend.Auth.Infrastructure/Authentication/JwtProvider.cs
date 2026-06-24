@@ -1,9 +1,9 @@
-using System.IdentityModel.Tokens.Jwt;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using Ascend.Auth.Business.Interfaces.Authentication;
-using Ascend.Auth.Domain.Constants.Claims;
+using Ascend.Common.Identity;
 using Ascend.Auth.Domain.Models;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -43,3 +43,4 @@ public class JwtProvider(IOptions<JwtOptions> options) : IJwtProvider
         return Convert.ToBase64String(RandomNumberGenerator.GetBytes(64));
     }
 }
+

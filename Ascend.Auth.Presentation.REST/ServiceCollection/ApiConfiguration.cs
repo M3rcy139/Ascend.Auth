@@ -6,10 +6,13 @@ public static class ApiConfiguration
 {
     public static void AddControllersAndSwagger(this IServiceCollection services)
     {
-        services.AddControllers()
+        services.AddControllers(options =>
+            {
+                options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true;
+            })
             .AddJsonOptions(options =>
             {
-                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
                 options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
             });
 

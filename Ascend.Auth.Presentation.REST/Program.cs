@@ -20,6 +20,7 @@ services.AddAuthServices();
 services.AddServices();
 services.AddRepositories();
 services.AddSeeders();
+services.AddCorsServices(configuration);
 services.AddAuthenticationConfiguration(configuration);
 services.AddGrpcServices();
 

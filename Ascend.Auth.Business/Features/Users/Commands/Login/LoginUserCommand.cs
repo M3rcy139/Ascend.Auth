@@ -5,7 +5,6 @@ using Ascend.Auth.Business.Options;
 using Ascend.Auth.DataAccess.Interfaces;
 using Ascend.Auth.Domain.Constants.Messages;
 using Ascend.Auth.Domain.Enums;
-using Ascend.Common.Utils.Extensions;
 using Ascend.Auth.Domain.Models;
 using MediatR;
 using Microsoft.Extensions.Options;
@@ -25,10 +24,10 @@ public class LoginUserCommandHandler(
     public async Task<AuthResponse> Handle(LoginUserCommand command, CancellationToken ct)
     {
         var user = await userRepository.GetUserByEmailAsync(command.Email);
-        user.ValidateEntity(ErrorMessages.UserNotFound);
+        if (user is null) throw new System.Security.Authentication.AuthenticationException(ErrorMessages.FailedToLogin);
 
-        var passwordValid = passwordHasher.Verify(command.Password, user!.PasswordHash);
-        passwordValid.ThrowIfFalse(() => new AuthenticationException(ErrorMessages.FailedToLogin));
+        if (!passwordHasher.Verify(command.Password, user.PasswordHash))
+            throw new AuthenticationException(ErrorMessages.FailedToLogin);
 
         if (user.Status != UserStatus.Active)
             throw new AuthenticationException(ErrorMessages.UserNotActive);
@@ -56,7 +55,8 @@ public class LoginUserCommandHandler(
             IsRevoked = false
         });
 
-        return new AuthResponse(accessToken, refreshTokenValue, expiresAt);
+        return new AuthResponse(accessToken, refreshTokenValue, expiresAt, user.Id, user.PersonId);
     }
 }
+
 
